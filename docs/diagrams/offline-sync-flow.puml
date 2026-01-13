@@ -1,0 +1,23 @@
+@startuml
+title Offline-First Task Update Flow
+
+participant User
+participant "Compose UI"
+participant "ViewModel"
+participant "Domain UseCase"
+participant "Local Database"
+participant "Sync Queue"
+participant "Background Worker"
+participant "Backend API"
+
+User -> "Compose UI" : Perform action (Start Task)
+"Compose UI" -> "ViewModel"
+"ViewModel" -> "Domain UseCase" : execute()
+
+"Domain UseCase" -> "Local Database" : update task
+"Domain UseCase" -> "Sync Queue" : enqueue change
+
+"Background Worker" -> "Sync Queue" : read pending changes
+"Background Worker" -> "Backend API" : sync
+
+@enduml

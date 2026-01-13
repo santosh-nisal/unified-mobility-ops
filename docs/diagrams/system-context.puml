@@ -1,0 +1,18 @@
+@startuml
+title Unified Mobility Ops Platform - System Context
+
+actor Technician
+actor Supervisor
+
+rectangle "Mobile App\n(Android / iOS)" {
+}
+
+rectangle "Backend API" {
+}
+
+Technician --> "Mobile App\n(Android / iOS)"
+Supervisor --> "Mobile App\n(Android / iOS)"
+
+"Mobile App\n(Android / iOS)" --> "Backend API" : Sync / Auth / Data
+
+@enduml

@@ -1,0 +1,31 @@
+@startuml
+title Mobile App - Layered Architecture
+
+package "UI Layer" {
+  [Compose Screens]
+  [ViewModels]
+}
+
+package "Domain Layer" {
+  [Use Cases]
+  [Domain Models]
+  [Repository Interfaces]
+}
+
+package "Data Layer" {
+  [Room / Local DB]
+  [Network API]
+  [Repository Implementations]
+}
+
+[Compose Screens] --> [ViewModels]
+[ViewModels] --> [Use Cases]
+
+[Use Cases] --> [Repository Interfaces]
+
+[Repository Implementations] ..|> [Repository Interfaces]
+
+[Repository Implementations] --> [Room / Local DB]
+[Repository Implementations] --> [Network API]
+
+@enduml
