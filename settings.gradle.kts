@@ -21,4 +21,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "Unified Mobility Android"
 include(":app")
- 
+include(":core:domain")
+include(":core:usecase")
+include(":core:usecase-api")
+include(":core:data")
