@@ -13,7 +13,7 @@ class CompleteTaskUseCaseImpl(
 
     override suspend fun invoke(taskId: TaskId): Task {
         val task = taskRepository.getById(taskId)
-            ?: error("Task not found: $taskId")
+            ?: error("Task can only be completed from STARTED state: $taskId")
 
         val now = clock.now()
 
