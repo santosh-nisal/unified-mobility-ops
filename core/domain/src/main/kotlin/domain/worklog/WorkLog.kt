@@ -1,6 +1,7 @@
 package domain.worklog
 
 import domain.common.TaskId
+import domain.common.WorkLogId
 import domain.sync.SyncState
 import java.time.Duration
 import java.time.Instant
@@ -16,6 +17,24 @@ data class WorkLog(
     val syncState: SyncState,
     val lastUpdatedAt: Instant
 ) {
+
+    companion object {
+        fun start(
+            workLogId: WorkLogId,
+            taskId: TaskId,
+            startedAt: Instant
+        ): WorkLog {
+            return WorkLog(
+                workLogId = workLogId,
+                taskId = taskId,
+                startedAt = startedAt,
+                stoppedAt = null,
+                status = WorkLogStatus.RUNNING,
+                syncState = SyncState.PENDING,
+                lastUpdatedAt = startedAt
+            )
+        }
+    }
 
     fun stop(stoppedAt: Instant, updatedAt: Instant): WorkLog {
         check(status == WorkLogStatus.RUNNING) {

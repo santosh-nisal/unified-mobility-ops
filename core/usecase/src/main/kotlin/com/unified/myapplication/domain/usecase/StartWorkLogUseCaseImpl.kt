@@ -3,11 +3,11 @@ package com.unified.myapplication.domain.usecase
 import com.unified.myapplication.domain.usecase.api.StartWorkLogUseCase
 import domain.common.Clock
 import domain.common.TaskId
+import domain.common.WorkLogId
 import domain.sync.SyncState
 import domain.task.TaskRepository
 import domain.task.TaskStatus
 import domain.worklog.WorkLog
-import domain.worklog.WorkLogId
 import domain.worklog.WorkLogRepository
 import domain.worklog.WorkLogStatus
 

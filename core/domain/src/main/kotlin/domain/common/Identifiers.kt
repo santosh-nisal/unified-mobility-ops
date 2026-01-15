@@ -9,7 +9,11 @@ value class UserId(val value: String)
 @JvmInline
 value class StepId(val value: String)
 
+@JvmInline
+value class WorkLogId(val value: String)
+
 interface Identifiers {
     fun newTaskId(): TaskId
     fun newStepId(): StepId
+    fun newWorkLogId(): WorkLogId
 }
