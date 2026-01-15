@@ -1,0 +1,13 @@
+@startuml
+title Task & WorkLog Interaction Timeline
+
+participant Task
+participant WorkLog
+
+Task -> WorkLog : start()
+WorkLog --> Task : active
+
+Task -> WorkLog : stop()
+WorkLog --> Task : completed
+
+@enduml

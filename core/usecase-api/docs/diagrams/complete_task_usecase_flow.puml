@@ -1,0 +1,18 @@
+@startuml
+title Complete Task Use Case Flow
+
+actor Client
+
+Client -> CompleteTaskUseCase : invoke(command)
+
+CompleteTaskUseCase -> TaskRepository : findById(taskId)
+TaskRepository --> CompleteTaskUseCase : Task
+
+CompleteTaskUseCase -> Task : complete()
+
+CompleteTaskUseCase -> WorkLogRepository : closeActiveWorkLog()
+CompleteTaskUseCase -> TaskRepository : save(task)
+
+CompleteTaskUseCase --> Client : Success / Error
+
+@enduml

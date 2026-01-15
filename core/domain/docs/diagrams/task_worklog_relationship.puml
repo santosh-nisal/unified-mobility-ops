@@ -1,0 +1,11 @@
+@startuml
+title Task ↔ WorkLog Rules
+
+note "Rules" as N1
+N1 : - Task can have only one ACTIVE WorkLog
+N1 : - WorkLog starts when Task starts
+N1 : - WorkLog ends when Task completes
+
+Task --> WorkLog : manages lifecycle
+
+@enduml

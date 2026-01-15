@@ -1,0 +1,18 @@
+@startuml
+title Start Task Use Case Flow
+
+actor Client
+
+Client -> StartTaskUseCase : invoke(command)
+
+StartTaskUseCase -> TaskRepository : findById(taskId)
+TaskRepository --> StartTaskUseCase : Task
+
+StartTaskUseCase -> Task : start()
+StartTaskUseCase -> WorkLogRepository : create(workLog)
+
+StartTaskUseCase -> TaskRepository : save(task)
+
+StartTaskUseCase --> Client : Success / Error
+
+@enduml

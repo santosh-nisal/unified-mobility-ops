@@ -1,0 +1,11 @@
+@startuml
+title Task State Machine
+
+[*] --> CREATED
+
+CREATED --> STARTED : start()
+STARTED --> COMPLETED : complete()
+
+COMPLETED --> [*]
+
+@enduml

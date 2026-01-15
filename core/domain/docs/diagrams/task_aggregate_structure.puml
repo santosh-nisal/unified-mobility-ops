@@ -1,0 +1,31 @@
+@startuml
+title Task Aggregate Structure
+
+package "Domain" {
+
+  class Task {
+    - taskId: TaskId
+    - title: String
+    - description: String
+    - assignee: Assignee
+    - status: TaskStatus
+    - createdAt: Instant
+    - startedAt: Instant?
+    - completedAt: Instant?
+    + start()
+    + complete()
+  }
+
+  class WorkLog {
+    - workLogId: WorkLogId
+    - taskId: TaskId
+    - startedAt: Instant
+    - endedAt: Instant?
+    + stop()
+    + duration()
+  }
+
+  Task "1" --> "0..*" WorkLog : creates
+}
+
+@enduml
